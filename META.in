@@ -1,0 +1,5 @@
+# specifications for "tophide":
+description = "Hiding toplevel _values"
+requires = ""
+archive(byte,toploop) = "tophide.cmo"
+archive(byte,create_toploop) = "tophide.cmo"
