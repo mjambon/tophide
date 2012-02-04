@@ -1,7 +1,7 @@
 # Copyright 2008 Martin Jambon. All rights reserved.
 # This file is distributed under the terms stated in file LICENSE.
 
-VERSION = 1.0.0
+VERSION = 1.0.1
 export VERSION
 
 .PHONY: all install clean
