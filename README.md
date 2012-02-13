@@ -9,17 +9,19 @@ This behavior is particularly useful for hiding preprocessor-generated
 values that are not meant to be reviewed by the user/programmer.
 
 
-1. Installation
+Installation
+------------
 
-  make
-  make install         # requires ocamlfind
+    make
+    make install         # requires ocamlfind
 
 Uninstallation can be performed with
 
-  make uninstall       # requires ocamlfind
+    make uninstall       # requires ocamlfind
 
 
-2. Usage
+Usage
+-----
 
 There are two modes: "hide" and "show".
 
@@ -32,12 +34,14 @@ tophide was loaded.
 The "#hide" directive allows to switch back to the "hide" mode.
 
 
-3. Example
+Example
+-------
 
 The best way of using this is with findlib.
 Findlib provides the "#require" directive for finding and loading a given
 package.
 
+```
 #use "topfind";;          (* just once *)
 - : unit = ()
 Findlib has been successfully loaded. Additional directives:
@@ -53,7 +57,7 @@ Findlib has been successfully loaded. Additional directives:
 # #require "tophide";;      (* loads tophide *)
 /home/martin/godi/lib/ocaml/site-lib/tophide: added to search path
 /home/martin/godi/lib/ocaml/site-lib/tophide/tophide.cmo: loaded
-
+```
 
 
 
@@ -64,9 +68,26 @@ manual)
 
 Let's see what we get:
 
+```ocaml
 # let a = 1;;                                               
 val a : int = 1
 # let _a = 2;;      (* good, no output for _a! *)
 # 
+```
 
 Now you can load your favorite camlp4 extensions.
+
+
+META files
+----------
+
+Packages depending on tophide should need it only in the toplevel loop.
+This is expressed as follows in the `META` file for ocamlfind:
+
+    requires(toploop) = "tophide"
+
+This comes in addition to other `requires` directives, e.g.:
+
+    requires = "unix pcre"
+    requires(toploop) = "tophide"
+
