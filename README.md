@@ -84,10 +84,9 @@ META files
 Packages depending on tophide should need it only in the toplevel loop.
 This is expressed as follows in the `META` file for ocamlfind:
 
-    requires(toploop) = "tophide"
+    requires(toploop) += "tophide"
 
 This comes in addition to other `requires` directives, e.g.:
 
     requires = "unix pcre"
-    requires(toploop) = "tophide"
-
+    requires(toploop) += "tophide"
