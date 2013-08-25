@@ -8,7 +8,7 @@ export VERSION
 
 all: META tophide.cmo
 tophide.cmo: tophide.ml
-	ocamlc -c tophide.ml
+	ocamlc -I +compiler-libs -c tophide.ml
 
 install:
 	ocamlfind install tophide META tophide.cmi tophide.cmo
