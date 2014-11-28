@@ -50,7 +50,7 @@ let default_env = save_env ()
 let filter_sig_item = function
     Osig_class (_, _, _, _, _)
   | Osig_class_type (_, _, _, _, _)
-  | Osig_exception _
+  | Osig_typext _
   | Osig_modtype _
   | Osig_module _
   | Osig_type _ as x -> Some x
