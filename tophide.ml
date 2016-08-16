@@ -53,8 +53,9 @@ let filter_sig_item = function
   | Osig_typext _
   | Osig_modtype _
   | Osig_module _
+  | Osig_ellipsis
   | Osig_type _ as x -> Some x
-  | Osig_value (name, _, _) as x ->
+  | Osig_value {oval_name = name; _} as x ->
       if name <> "" && name.[0] = '_' then None
       else Some x
 
