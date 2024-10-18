@@ -10,17 +10,17 @@ open Outcometree
 
 type env = {
   print_out_class_type : 
-    Format.formatter -> out_class_type -> unit;
+    Format_doc.formatter -> out_class_type -> unit;
   print_out_module_type :
-    Format.formatter -> out_module_type -> unit;
+    Format_doc.formatter -> out_module_type -> unit;
   print_out_phrase :
     Format.formatter -> out_phrase -> unit;
   print_out_sig_item :
-    Format.formatter -> out_sig_item -> unit;
+    Format_doc.formatter -> out_sig_item -> unit;
   print_out_signature : 
-    Format.formatter -> out_sig_item list -> unit;
+    Format_doc.formatter -> out_sig_item list -> unit;
   print_out_type :
-    Format.formatter -> out_type -> unit;
+    Format_doc.formatter -> out_type -> unit;
   print_out_value :
     Format.formatter -> out_value -> unit;
 }
@@ -97,16 +97,10 @@ let show () = load_env default_env
 
 let _ =
   (* Add "#hide" directive: *)
-  Hashtbl.add
-    directive_table
-    "hide"
-    (Directive_none hide);
+  add_directive "hide" (Directive_none hide) { section = ""; doc = "" };
   
   (* Add "#show" directive: *)
-  Hashtbl.add
-    directive_table
-    "show"
-    (Directive_none show);
+  add_directive "show" (Directive_none show) { section = ""; doc = "" };
 
   (* Enter "hide" mode upon loading *)
   hide ()
